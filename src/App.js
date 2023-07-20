@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
 import html2canvas from 'html2canvas';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 function App() {
 
@@ -32,18 +34,27 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App ResolutionForm">
      {/* Select picker de memes */}
-     <select onChange={onChangeImagen}>
-     <option value="wazowski.jpg">Wasowski</option>
-      <option value="girlScared.png">Anime Girl Scared</option>    
-     </select> <br/>     
-     {/* Input text - Primer Linea */}
-    <input onChange={onChangeLinea1} type="text" placeholder='Linea Superior'/> <br/> 
-     {/* Input text - Segunda Linea */}
-     <input onChange={onChangeLinea2} type="text" placeholder='Linea Inferior'/> <br/>
+     <br/> 
+     <Form.Select  aria-label="Default select example" onChange={onChangeImagen} placeholder='Elije una MemeImagen'>
+      <option value="wazowski.jpg">Wasowski</option>
+      <option value="girlScared.png">Anime Girl Scared</option>
+    </Form.Select>
+     
+     <form class="mx-auto">
+     <Form.Group className="mb-3 ResolutionForm" controlId="exampleForm.ControlInput1">
+      <br/>   
+       {/* Input text - Primer Linea */}     
+        <Form.Control onChange={onChangeLinea1} type="text" placeholder='Linea Superior' />
+      <br/>  
+      {/* Input text - Segunda Linea */}
+        <Form.Control onChange={onChangeLinea2} type="text" placeholder='Linea Inferior'/>
+      </Form.Group>
+     </form>
+    
      {/* Boton exportar */}
-     <button onClick={onCLickExportar}>Exportar</button>
+     <Button onClick={onCLickExportar} as="input" type="submit" value="Exportar" />{' '}
 
      <div className="meme" id="meme">
       <span>{linea1}</span><br/>
